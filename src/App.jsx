@@ -6,7 +6,10 @@ const App = props => {
   const [price, setPrice] = useState(props.price);
   const increment = () => setPrice(price + 1);
   const decrement = () => setPrice(price - 1);
-  const reset = () => setPrice(props.price);
+  const reset = () => {
+    setPrice(props.price);
+    setName(props.name);
+  };
 
   return (
     <>
@@ -16,7 +19,8 @@ const App = props => {
       <button onClick={increment}>+1</button>
       <button onClick={decrement}>-1</button>
       <button onClick={reset}>RESET</button>
-      <input value={name}></input>
+      {/* e.targetで入力値を拾える */}
+      <input value={name} onChange={e => setName(e.target.value)}></input>
     </>
   );
 };
