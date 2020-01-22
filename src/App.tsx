@@ -3,10 +3,14 @@ import { useState } from "react";
 
 const App: React.FC = () => {
   const [count, setCount] = useState(0);
-  console.log(count);
-  console.log(setCount);
+  const increment = () => setCount(count + 1);
 
-  return <div>ここにテンプレート！</div>;
+  return (
+    <>
+      <div>count : {count}</div>
+      <button onClick={increment}>+1</button>
+    </>
+  );
 };
 
 export default App;
