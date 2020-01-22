@@ -7,6 +7,7 @@ const App: React.FC = () => {
   const decrement = () => setCount(count - 1);
   const increment2 = () => setCount(prevCount => prevCount + 1);
   const decrement2 = () => setCount(prevCount => prevCount - 1);
+  const reset = () => setCount(0);
 
   return (
     <>
@@ -16,6 +17,9 @@ const App: React.FC = () => {
       <br />
       <button onClick={increment2}>+1</button>
       <button onClick={decrement2}>-1</button>
+      <div>
+        <button onClick={reset}>RESET</button>
+      </div>
     </>
   );
 };
