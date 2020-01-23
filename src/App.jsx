@@ -2,25 +2,29 @@ import React from "react";
 import { useState } from "react";
 
 const App = props => {
-  const [name, setName] = useState(props.name);
+  const [state, setState] = useState(props);
   const [price, setPrice] = useState(props.price);
   const increment = () => setPrice(price + 1);
   const decrement = () => setPrice(price - 1);
+
+  //初期化処理と同じことをすれば良い
   const reset = () => {
-    setPrice(props.price);
-    setName(props.name);
+    setState(props);
   };
 
   return (
     <>
       <p>
-        現在の{name}は{price}円持っています。
+        現在の{state.name}は{price}円持っています。
       </p>
       <button onClick={increment}>+1</button>
       <button onClick={decrement}>-1</button>
       <button onClick={reset}>RESET</button>
       {/* e.targetで入力値を拾える */}
-      <input value={name} onChange={e => setName(e.target.value)}></input>
+      <input
+        value={state.name}
+        onChange={e => setState({ ...state, name: e.target.value })}
+      ></input>
     </>
   );
 };
