@@ -28,7 +28,13 @@ const App = props => {
       >
         -1
       </button>
-      <button onClick={reset}>RESET</button>
+      <button
+        onClick={() => {
+          setState(props);
+        }}
+      >
+        RESET
+      </button>
       {/* e.targetで入力値を拾える */}
       <input
         value={state.name}
