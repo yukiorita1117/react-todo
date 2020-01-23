@@ -25,6 +25,7 @@ const App = props => {
   );
 };
 
+//defaultPropsはInitialStateと同義。Appの持つメソッド
 App.defaultProps = {
   name: "JSON_HardCoder",
   price: 1000
