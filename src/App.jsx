@@ -1,14 +1,22 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const App = props => {
   const [state, setState] = useState(props);
   const { name, price } = state;
 
-  // 初期化処理と同じことをすれば良い
-  // const reset = () => {
-  //   setState(props);
-  // };
+  useEffect(() => {
+    console.log("useEffect呼んでる！");
+  });
+
+  useEffect(() => {
+    console.log("componentDidMount");
+  }, []);
+
+  useEffect(() => {
+    console.log("this callback is for name");
+  }, [name]);
+
   return (
     <>
       <p>
