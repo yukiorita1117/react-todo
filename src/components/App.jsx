@@ -23,7 +23,10 @@ const App = () => {
 
   const deleteAllEvents = e => {
     e.preventDefault();
-    dispatch({ type: "DELETE_ALL_EVENT", title, body });
+    const result = window.confirm(
+      "本当に全てのイベントを削除してもいいですか？"
+    );
+    if (result) dispatch({ type: "DELETE_ALL_EVENT", title, body });
   };
 
   //disabledはtrueの時に非活性化する
@@ -69,7 +72,11 @@ const App = () => {
           >
             イベント作成
           </StyledButton>
-          <StyledButton className="btn btn-danger" onClick={deleteAllEvents}>
+          <StyledButton
+            className="btn btn-danger"
+            onClick={deleteAllEvents}
+            disabled={state.length === 0}
+          >
             全てのイベントを削除する
           </StyledButton>
         </form>
