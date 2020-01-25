@@ -1,9 +1,8 @@
 import React from "react";
-import { useEffect, useReducer } from "react";
+import { useReducer } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import styled from "styled-components";
 import reducer from "../reducers/index";
-import Event from "../components/Event";
+import Events from "../components/Events";
 import EventForm from "../components/EventForm";
 
 const App = () => {
@@ -14,22 +13,7 @@ const App = () => {
     <>
       <div className="container">
         <EventForm state={state} dispatch={dispatch} />
-        <h4>イベント一覧</h4>
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Title</th>
-              <th scope="col">Body</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            {state.map((event, index) => (
-              <Event key={index} event={event} dispatch={dispatch} />
-            ))}
-          </tbody>
-        </table>
+        <Events state={state} dispatch={dispatch} />
       </div>
     </>
   );

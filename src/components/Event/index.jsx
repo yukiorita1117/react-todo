@@ -1,7 +1,7 @@
 import React from "react";
 
 //注意！！ eventはオブジェクトなので{event}で渡さないとダメ
-const Event = ({ event }, dispatch) => {
+const Event = ({ event, dispatch }) => {
   const id = event.id;
   const handleClickDeleteButton = () => {
     const result = window.confirm(
