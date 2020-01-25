@@ -1,6 +1,6 @@
 //state:前の状態(未定義の可能性もあるので初期化する)
 //サンプルイベント
-// event = [
+// events = [
 //   { id: 1, title: "タイトル1", body: "内容だよ" },
 //   { id: 1, title: "タイトル２", body: "内容だよ!!" }
 // ];
@@ -15,7 +15,7 @@ const events = (state = [], action) => {
 
       //stateを展開して、id挿入し、eventも展開して挿入
       return [...state, { ...state, id, ...event }];
-    case "DELETE":
+    case "DELETE_EVENT":
       return state;
     case "DELETE_ALL_EVENT":
       return [];
