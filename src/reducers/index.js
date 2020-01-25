@@ -16,7 +16,7 @@ const events = (state = [], action) => {
       //stateを展開して、id挿入し、eventも展開して挿入
       return [...state, { ...state, id, ...event }];
     case "DELETE_EVENT":
-      return state;
+      return state.filter(event => event.id !== action.id);
     case "DELETE_ALL_EVENT":
       return [];
     default:
