@@ -1,8 +1,11 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useReducer } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import reducer from "../reducers/index";
 
 const App = () => {
+  //ここのstateはreducerが勝手に検知して変えてくれる(イベント発火時に)
+  const [state, dispatch] = useReducer(reducer, []);
   return (
     <>
       <div className="container">
