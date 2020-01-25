@@ -3,6 +3,7 @@ import { useState, useEffect, useReducer } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 import reducer from "../reducers/index";
+import Event from "../components/Event";
 
 const App = () => {
   //ここのstateはreducerが勝手に検知して変えてくれる(イベント発火時に)
@@ -72,7 +73,10 @@ const App = () => {
             </tr>
           </thead>
           <tbody>
-            {state.map((event, index) => {
+            {state.map((event, index) => (
+              <Event key={index} event={event} />
+            ))}
+            {/* {state.map((event, index) => {
               const id = event.id;
               const handleClickDeleteButton = () => {
                 dispatch({ type: "DELETE_EVENT", id });
@@ -93,7 +97,7 @@ const App = () => {
                   </td>
                 </tr>
               );
-            })}
+            })} */}
           </tbody>
         </table>
       </div>
