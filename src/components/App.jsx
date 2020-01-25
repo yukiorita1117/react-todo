@@ -6,6 +6,19 @@ import reducer from "../reducers/index";
 const App = () => {
   //ここのstateはreducerが勝手に検知して変えてくれる(イベント発火時に)
   const [state, dispatch] = useReducer(reducer, []);
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+
+  const addEvent = e => {
+    //eはイベントオブジェクト的なやつ
+    //preventDefault()メソッドで初期で備わってる全体再レンダリングを防止する。(更新して欲しいところだけレンダリングさせたい)
+    e.preventDefault();
+    dispatch({ type: "CREATE_EVENT", title, body });
+
+    setTitle("");
+    setBody("");
+  };
+
   return (
     <>
       <div className="container">
@@ -13,15 +26,27 @@ const App = () => {
         <form>
           <div className="form-group">
             <label htmlFor="formEventTitle">Title</label>
-            <input className="form-control" id="formEventTitle"></input>
+            <input
+              className="form-control"
+              id="formEventTitle"
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+            ></input>
           </div>
 
           <div className="form-group">
             <label htmlFor="formEventBody">Body</label>
-            <input className="form-control" id="formEventBody"></input>
+            <textarea
+              className="form-control"
+              id="formEventBody"
+              value={body}
+              onChange={e => setBody(e.target.value)}
+            ></textarea>
           </div>
 
-          <button className="btn btn-primary">イベント作成</button>
+          <button className="btn btn-primary" onClick={addEvent}>
+            イベント作成
+          </button>
           <button className="btn btn-danger">全てのイベントを削除する</button>
         </form>
         <br />

@@ -8,12 +8,13 @@
 const events = (state = [], action) => {
   switch (action.type) {
     case "CREATE_EVENT":
+      console.log("reducer内部", state);
       const event = { title: action.title, body: action.body };
       const length = state.length;
       const id = length === 0 ? 1 : state[length - 1].id + 1;
 
       //stateを展開して、id挿入し、eventも展開して挿入
-      return { ...state, id, ...event };
+      return [...state, { ...state, id, ...event }];
     case "DELETE":
       return state;
     case "DELETE_ALL_EVENT":
