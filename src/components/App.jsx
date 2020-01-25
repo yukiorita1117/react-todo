@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styled from "styled-components";
 import reducer from "../reducers/index";
@@ -13,7 +13,7 @@ const App = () => {
   return (
     <>
       <div className="container">
-        <br />
+        <EventForm state={state} dispatch={dispatch} />
         <h4>イベント一覧</h4>
         <table className="table table-hover">
           <thead>

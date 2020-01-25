@@ -1,6 +1,5 @@
-import React, { useState, useReducer } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import reducer from "../../reducers/index";
 
 const StyledH4 = styled.h4`
   margin-top: 32px;
@@ -10,9 +9,9 @@ const StyledButton = styled.button`
   margin-right: 4px;
 `;
 
-const EventForm = () => {
+//stateもdispatchもオブジェクトなので{}でくくる
+const EventForm = ({ state, dispatch }) => {
   //ここのstateはreducerが勝手に検知して変えてくれる(イベント発火時に)
-  const [state, dispatch] = useReducer(reducer, []);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
