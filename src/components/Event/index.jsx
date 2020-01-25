@@ -1,4 +1,5 @@
 import React from "react";
+import { DELETE_EVENT } from "../../actions";
 
 //注意！！ eventはオブジェクトなので{event}で渡さないとダメ
 const Event = ({ event, dispatch }) => {
@@ -7,7 +8,7 @@ const Event = ({ event, dispatch }) => {
     const result = window.confirm(
       `本当にイベント(id:${id})を削除してもよろしいでしょうか？`
     );
-    if (result) dispatch({ type: "DELETE_EVENT", id });
+    if (result) dispatch({ type: DELETE_EVENT, id });
   };
   console.log(event);
   return (
