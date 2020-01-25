@@ -21,6 +21,14 @@ const App = () => {
     setBody("");
   };
 
+  const deleteAllEvents = e => {
+    e.preventDefault();
+    dispatch({ type: "DELETE_ALL_EVENT", title, body });
+  };
+
+  //disabledはtrueの時に非活性化する
+  const unCreatable = title === "" || body === "";
+
   const StyledH4 = styled.h4`
     margin-top: 32px;
   `;
@@ -54,10 +62,14 @@ const App = () => {
             ></textarea>
           </div>
 
-          <StyledButton className="btn btn-primary" onClick={addEvent}>
+          <StyledButton
+            className="btn btn-primary"
+            onClick={addEvent}
+            disabled={unCreatable}
+          >
             イベント作成
           </StyledButton>
-          <StyledButton className="btn btn-danger">
+          <StyledButton className="btn btn-danger" onClick={deleteAllEvents}>
             全てのイベントを削除する
           </StyledButton>
         </form>
