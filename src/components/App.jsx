@@ -24,6 +24,10 @@ const App = () => {
     margin-top: 32px;
   `;
 
+  const StyledButton = styled.button`
+    margin-right: 4px;
+  `;
+
   return (
     <>
       <div className="container">
@@ -49,23 +53,48 @@ const App = () => {
             ></textarea>
           </div>
 
-          <button className="btn btn-primary" onClick={addEvent}>
+          <StyledButton className="btn btn-primary" onClick={addEvent}>
             イベント作成
-          </button>
-          <button className="btn btn-danger">全てのイベントを削除する</button>
+          </StyledButton>
+          <StyledButton className="btn btn-danger">
+            全てのイベントを削除する
+          </StyledButton>
         </form>
         <br />
         <h4>イベント一覧</h4>
         <table className="table table-hover">
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">ID</th>
               <th scope="col">Title</th>
               <th scope="col">Body</th>
+              <th />
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            {state.map((event, index) => {
+              const id = event.id;
+              const handleClickDeleteButton = () => {
+                dispatch({ type: "DELETE_EVENT", id });
+              };
+              return (
+                <tr key={index}>
+                  <td>{id}</td>
+                  <td>{event.title}</td>
+                  <td>{event.body}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-danger"
+                      onClick={handleClickDeleteButton}
+                    >
+                      削除
+                    </button>
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
       </div>
     </>
