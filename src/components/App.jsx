@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect, useReducer } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import styled from "styled-components";
 import reducer from "../reducers/index";
 
 const App = () => {
@@ -19,10 +20,14 @@ const App = () => {
     setBody("");
   };
 
+  const StyledH4 = styled.h4`
+    margin-top: 32px;
+  `;
+
   return (
     <>
       <div className="container">
-        <h4>イベント作成フォーム</h4>
+        <StyledH4>イベント作成フォーム</StyledH4>
         <form>
           <div className="form-group">
             <label htmlFor="formEventTitle">Title</label>
