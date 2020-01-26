@@ -1,7 +1,7 @@
 import React from "react";
 import Event from "../Event";
 import styled from "styled-components";
-
+import AppContext from "../../contexts/AppContext";
 const EventsWrapper = styled.div`
   margin-top: 24px;
 `;
@@ -10,6 +10,11 @@ const Events = ({ state, dispatch }) => {
   return (
     <>
       <EventsWrapper>
+        <AppContext.Consumer>
+          {value => {
+            return <div>{value}</div>;
+          }}
+        </AppContext.Consumer>
         <h4>イベント一覧</h4>
         <table className="table table-hover">
           <thead>
