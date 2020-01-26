@@ -1,7 +1,13 @@
 import React, { useContext, useState } from "react";
 import styled from "styled-components";
-import { CREATE_EVENT, DELETE_ALL_EVENT } from "../../actions";
+import {
+  CREATE_EVENT,
+  DELETE_ALL_EVENT,
+  ADD_OPERATION_LOG,
+  DELETE_ALL_OPERATION_LOGS
+} from "../../actions";
 import AppContext from "../../contexts/AppContext";
+import { timeCurrentIso8601 } from "../../utils";
 
 const StyledH4 = styled.h4`
   margin-top: 32px;
@@ -23,6 +29,11 @@ const EventForm = () => {
     //preventDefault()メソッドで初期で備わってる全体再レンダリングを防止する。(更新して欲しいところだけレンダリングさせたい)
     e.preventDefault();
     dispatch({ type: CREATE_EVENT, title, body });
+    dispatch({
+      type: ADD_OPERATION_LOG,
+      description: "イベントを作成しました！",
+      operatedAt: timeCurrentIso8601()
+    });
 
     setTitle("");
     setBody("");
@@ -33,7 +44,14 @@ const EventForm = () => {
     const result = window.confirm(
       "本当に全てのイベントを削除してもいいですか？"
     );
-    if (result) dispatch({ type: DELETE_ALL_EVENT, title, body });
+    if (result) {
+      dispatch({ type: DELETE_ALL_EVENT, title, body });
+      dispatch({
+        type: ADD_OPERATION_LOG,
+        description: "全てのイベントを削除しました！",
+        operatedAt: timeCurrentIso8601()
+      });
+    }
   };
 
   //disabledはtrueの時に非活性化する

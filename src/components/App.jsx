@@ -14,7 +14,6 @@ const App = () => {
   //ここのstateはreducerが勝手に検知して変えてくれる(イベント発火時に)
   // stateはオブジェクト
   const [state, dispatch] = useReducer(reducer, initialState);
-
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       <div className="container">
