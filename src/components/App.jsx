@@ -1,7 +1,7 @@
 import React from "react";
 import { useReducer } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import reducer from "../reducers/index";
+import reducer from "../reducers/events";
 import AppContext from "../contexts/AppContext";
 import Events from "../components/Events";
 import EventForm from "../components/EventForm";
