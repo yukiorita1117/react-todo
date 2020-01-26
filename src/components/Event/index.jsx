@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { DELETE_EVENT } from "../../actions";
+import { DELETE_EVENT, ADD_OPERATION_LOG } from "../../actions";
 import AppContext from "../../contexts/AppContext";
+import { timeCurrentIso8601 } from "../../utils";
 
 //注意！！ eventはオブジェクトなので{event}で渡さないとダメ
 const Event = ({ event }) => {
@@ -10,7 +11,14 @@ const Event = ({ event }) => {
     const result = window.confirm(
       `本当にイベント(id:${id})を削除してもよろしいでしょうか？`
     );
-    if (result) dispatch({ type: DELETE_EVENT, id });
+    if (result) {
+      dispatch({ type: DELETE_EVENT, id });
+      dispatch({
+        type: ADD_OPERATION_LOG,
+        description: `イベント(id=${id})を削除しました！`,
+        operatedAt: timeCurrentIso8601()
+      });
+    }
   };
   return (
     <tr>
