@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { DELETE_EVENT } from "../../actions";
+import AppContext from "../../contexts/AppContext";
 
 //注意！！ eventはオブジェクトなので{event}で渡さないとダメ
-const Event = ({ event, dispatch }) => {
+const Event = ({ event }) => {
+  const { dispatch } = useContext(AppContext);
   const id = event.id;
   const handleClickDeleteButton = () => {
     const result = window.confirm(
@@ -10,7 +12,6 @@ const Event = ({ event, dispatch }) => {
     );
     if (result) dispatch({ type: DELETE_EVENT, id });
   };
-  console.log(event);
   return (
     <tr>
       <td>{id}</td>

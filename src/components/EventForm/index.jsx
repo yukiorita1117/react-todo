@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { CREATE_EVENT, DELETE_ALL_EVENT } from "../../actions";
+import AppContext from "../../contexts/AppContext";
 
 const StyledH4 = styled.h4`
   margin-top: 32px;
@@ -11,7 +12,8 @@ const StyledButton = styled.button`
 `;
 
 //stateもdispatchもオブジェクトなので{}でくくる
-const EventForm = ({ state, dispatch }) => {
+const EventForm = () => {
+  const { state, dispatch } = useContext(AppContext);
   //ここのstateはreducerが勝手に検知して変えてくれる(イベント発火時に)
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
