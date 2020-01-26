@@ -1,5 +1,6 @@
 //Root Reducer
-import { combineReducer } from "redux";
+import { combineReducers } from "redux";
 import events from "./events";
 
-export default combineReducer({ events });
+//eventsとしてcombineReducerで定義したので、eventsはオブジェクトになっている
+export default combineReducers({ events });
