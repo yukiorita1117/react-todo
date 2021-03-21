@@ -17,7 +17,7 @@ const App = () => {
     ? JSON.parse(appState)
     : {
         events: [],
-        operationLogs: []
+        operationLogs: [],
       };
   //ここのstateはreducerが勝手に検知して変えてくれる(イベント発火時に)
   // stateはオブジェクト
